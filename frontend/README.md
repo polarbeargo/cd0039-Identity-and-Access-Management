@@ -20,6 +20,8 @@ This project uses NPM to manage software dependencies. NPM Relies on the package
 
 ```bash
 npm install
+# if ng: command not found
+npm link @angular/cli
 ```
 
 > _tip_: **npm i** is shorthand for **npm install**
@@ -39,7 +41,8 @@ Ionic ships with a useful development server which detects changes and transpile
 ```bash
 ionic serve
 ```
-
+if encounter `[ERROR] ng has unexpectedly closed (exit code 127)` run `sudo n v16.16.0` 
+then replace with this [package.json ](frontend/package.json).
 > _tip_: Do not use **ionic serve** in production. Instead, build Ionic into a build artifact for your desired platforms.
 > [Checkout the Ionic docs to learn more](https://ionicframework.com/docs/cli/commands/build)
 
