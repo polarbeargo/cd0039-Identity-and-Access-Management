@@ -37,10 +37,11 @@ def index():
 @app.route('/drinks', methods=['GET'])
 def get_drinks():
     try:
-        drinks = Drink.query.all().short()
+        all_drinks = Drink.query.all()
+        drinks = [drink.short() for drink in all_drinks]
         return jsonify({
             'success': True,
-            'drinks': [drink.short() for drink in drinks]
+            'drinks': drinks
         }), 200
     except Exception as e:
         print(e)
