@@ -58,12 +58,14 @@ def get_drinks():
         or appropriate status code indicating reason for failure
 '''
 @app.route('/drinks-detail', methods=['GET'])
+@requires_auth('get:drinks-detail')
 def get_drinks_detail():
     try:
         drinks = Drink.query.all().long()
+        drinks_detail = [drink.long() for drink in drinks]
         return jsonify({
             'success': True,
-            'drinks': [drink.long() for drink in drinks]
+            'drinks': drinks_detail
         }), 200
     except Exception as e:
         print(e)
@@ -81,6 +83,7 @@ def get_drinks_detail():
 '''
 
 @app.route('/drinks', methods=['POST'])
+@requires_auth('post:drinks')
 def create_drink():
     try:
         body = request.get_json()
@@ -108,6 +111,7 @@ def create_drink():
         or appropriate status code indicating reason for failure
 '''
 @app.route('/drinks/<int:id>', methods=['PATCH'])
+@requires_auth('patch:drinks')
 def update_drink(id):
     try:
         body = request.get_json()
@@ -139,6 +143,7 @@ def update_drink(id):
         or appropriate status code indicating reason for failure
 '''
 @app.route('/drinks/<int:id>', methods=['DELETE'])
+@requires_auth('delete:drinks')
 def remove_drink(id):
     try:
         drink = Drink.query.filter(Drink.id == id).one_or_none()
