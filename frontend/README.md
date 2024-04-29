@@ -42,7 +42,7 @@ Ionic ships with a useful development server which detects changes and transpile
 ionic serve
 ```
 if encounter `[ERROR] ng has unexpectedly closed (exit code 127)` run `sudo n v16.16.0` 
-then replace with this [package.json ](frontend/package.json).
+then replace with this [package.json ](package.json).
 > _tip_: Do not use **ionic serve** in production. Instead, build Ionic into a build artifact for your desired platforms.
 > [Checkout the Ionic docs to learn more](https://ionicframework.com/docs/cli/commands/build)
 
